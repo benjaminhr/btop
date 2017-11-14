@@ -17,5 +17,8 @@
     "express": "^4.16.2",
     "osx-temperature-sensor": "^1.0.1",
     "systeminformation": "^3.33.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }
