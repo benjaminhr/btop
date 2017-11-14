@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>gtop</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <p class='title'>OS Info:</p>
+                <ul id='os-result'>
+                    <p>Platform:
+                        <span></span>
+                    </p>
+                
+                    <p>Distro:
+                        <span></span>
+                    </p>
+
+                    <p>Arch:
+                        <span></span>
+                    </p>
+
+                    <p>Hostname:
+                        <span></span>
+                    </p>
+
+                </ul>
+        </div>
+
+        <div class="card">
+            <p class='title'>Temperature of CPU:
+                <span id='temp-result'></span>
+            </p>
+        </div>
+
+        <div class="card">
+            <p class='title'>Network Stats</p>
+            <ul id='net-result'>
+                <p>RX/sec:
+                    <span id='rx'></span>
+                </p>
+
+                <p>TX/sec:
+                    <span id='tx'></span>
+                </p>
+            </ul>
+        </div>
+
+        <div class="card">
+            <p class='title'>Processes running</p>
+                <table id='ps-result'></table>
+        </div>
+    </div>
+    <script src='main.js'></script>
+</body>
+</html>

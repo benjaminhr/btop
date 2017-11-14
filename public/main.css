@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700');
+
+.wrapper {
+  max-width:500px;
+  margin:10%;
+  font-family: courier;
+}
+
+.card {
+  background-color:#c2e9fb;
+  padding:15px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin:20px;
+}
+
+.title {
+  font-weight:bold;
+  color:black;
+  letter-spacing: 0.5px;
+}
+
+span {
+  font-weight:normal;
+  padding-left:10px;
+  color:tomato;
+}
+
+table {
+  width:100%;
+}
+
+table, th {
+    border: 1px solid black;
+}
+
+td:nth-child(n+1) {
+  color:tomato;
+}
+
+#net-result {
+  padding-left:10px;
+}
+
+#os-result {
+  padding-left:10px;
+}
+
+#os-result > p >span {
+  padding-left:0px;
+}
