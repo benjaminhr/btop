@@ -1,8 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700');
 
+.loading {
+  height:50px;
+  width:50px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border: 5px solid tomato;
+  border-radius:50%;
+  animation-name: load;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes load {
+  from {
+    height:0px;
+    width:0px;
+  }
+  to {
+    opacity: 0;
+    height:50px;
+    width:50px;
+  }
+}
+
 .wrapper {
-  max-width:500px;
+  /*max-width:500px;*/
   font-family: courier;
+  display:none;
+  flex-wrap: wrap;
+  justify-content: center;
+  user-select:none;
 }
 
 .card {
@@ -11,6 +41,23 @@
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin:20px;
+  min-width:300px;
+}
+
+.disk-results {
+  padding-left:10px;
+}
+
+#cores {
+  padding-left:0px;
+}
+
+.chart, .temp, .ps {
+  min-width:450px;
+}
+
+#temp-result {
+  float:right;
 }
 
 .title {
@@ -27,6 +74,7 @@ span {
 
 table {
   width:100%;
+  min-height:305px;
 }
 
 table, th {
@@ -39,6 +87,10 @@ td:nth-child(n+1) {
 
 tr:hover {
   background-color:white;
+}
+
+.first-row:hover {
+  background-color:#c2e9fb;
 }
 
 #net-result {

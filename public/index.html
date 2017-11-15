@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <link rel="icon" type="image/x-icon" href="https://couleecreative.com/sites/default/files/2017-06/home-bird%402x.png">
     <title>btop</title>
 </head>
 <body>
+    <div class="loading"></div>
+
     <div class="wrapper">
         <div class="card">
             <p class='title'>OS Info:</p>
@@ -33,8 +36,12 @@
         </div>
 
         <div class="card">
-            <p class='title'>Temperature of CPU:
-                <span id='temp-result'></span>
+            <p class='title disk-usage'>Disk Usage:</p>
+            <p class='disk-results'>Used:
+                <span id='used-result'></span>
+            </p>
+            <p class='disk-results'>Size:
+                <span id='size-result'></span>
             </p>
         </div>
 
@@ -51,25 +58,24 @@
             </ul>
         </div>
 
-        <div class="card">
-            <p class='title disk-usage'>Disk Usage:</p>
-                <p>Used: 
-                    <span id='used-result'></span>
-                </p>
-                <p>Size: 
-                    <span id='size-result'></span>
-                </p>
-        </div>
-
-        <div class="card">
-            <p class='title'>Processes running</p>
-                <table id='ps-result'></table>
+        <div class="card temp">
+            <p class='title'>Temperature of CPU:
+                <span id='temp-result'></span>
+            </p>
+            <div class="temp-chart ct-perfect-fourth"></div>
         </div>
 
         <div class="card chart">
-            <p class='title'>CPU usage <span id='cpu-avg'></span></p>
-                <div class="ct-chart ct-perfect-fourth"></div>
-    
+            <p class='title'>CPU usage
+                <span id='cores'></span>
+                <span id='cpu-avg'></span>
+            </p>
+            <div class="cpu-chart ct-perfect-fourth"></div>
+        </div>
+
+        <div class="card ps">
+            <p class='title'>Processes running</p>
+                <table id='ps-result'></table>
         </div>
 
     </div>
