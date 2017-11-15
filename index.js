@@ -47,5 +47,23 @@ app.get('/os', (req,res) => {
     })
 })
 
+app.get('/disk', (req, res) => {
+    si.fsSize().then(disk => {
+        var used = bytesToSize(disk[0].used);
+        var size = bytesToSize(disk[0].size);
+        res.json({
+            used:used,
+            size:size
+        })
+    })
+
+    var bytesToSize = (bytes) => {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+    };
+})
+
 var port = process.env.PORT || 8080;
 app.listen(port);

@@ -37,6 +37,10 @@ td:nth-child(n+1) {
   color:tomato;
 }
 
+tr:hover {
+  background-color:white;
+}
+
 #net-result {
   padding-left:10px;
 }

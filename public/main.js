@@ -2,9 +2,11 @@ var tempResult = document.getElementById('temp-result');
 var psResult = document.getElementById('ps-result');
 var netResult = document.querySelectorAll('#net-result > p > span');
 var osResult = document.querySelectorAll('#os-result > p > span')
+var diskResult = document.querySelectorAll('.disk-usage ~ p > span');
 
+var url = window.location.origin;
 setInterval(() => {
-    fetch('http://localhost:8080/temp')
+    fetch(url + '/temp')
         .then(data => data.json())
         .then(json => {
             tempResult.innerText = json.temperature + '°C';
@@ -13,7 +15,7 @@ setInterval(() => {
 
 
 setInterval(() => {
-    fetch('http://localhost:8080/ps')
+    fetch(url + '/ps')
         .then(data => data.json())
         .then(json => {
             var result = "<tr><th>PID</th><th>Name</th><th>CPU %</th></tr>";
@@ -26,7 +28,7 @@ setInterval(() => {
 }, 2000)
 
 setInterval(() => {
-    fetch('http://localhost:8080/net')
+    fetch(url + '/net')
         .then(data => data.json())
         .then(json => {
             netResult[0].innerText = json.rx_sec.toFixed(1);
@@ -36,12 +38,21 @@ setInterval(() => {
 
 
 setInterval(() => {
-    fetch('http://localhost:8080/os')
+    fetch(url + '/os')
         .then(data => data.json())
         .then(json => {
             osResult[0].innerText = json.platform;
             osResult[1].innerText = json.distro;
             osResult[2].innerText = json.arch;          
             osResult[3].innerText = json.hostname; 
+        })
+}, 2000)
+
+setInterval(() => {
+    fetch(url + '/disk')
+        .then(data => data.json())
+        .then(json => {
+            diskResult[0].innerText = 'Used: ' + json.used;
+            diskResult[1].innerText = 'Size: ' + json.size;
         })
 }, 2000)
