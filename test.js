@@ -1,13 +1,10 @@
 const si = require('systeminformation')
 
-si.fsSize().then(disk => {
-  bytesToSize(disk[0].used)
-  bytesToSize(disk[0].size)
-})
+si.currentLoad().then(data => { 
 
-var bytesToSize = (bytes) => {
-  var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
-  if (bytes == 0) return '0 Byte'
-  var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
-  return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
-}
+  console.log(result);
+  // var cpus = data.cpus.map((x, index) => {
+  //   var result = [index, Math.round(x.load)]
+  //   return result;
+  // })
+})

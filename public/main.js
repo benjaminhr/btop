@@ -61,8 +61,17 @@ setInterval(() => {
   fetch(url + '/cpu')
         .then(data => data.json())
         .then(json => {
-          var result = Math.round(json['cpu-load'])
-          cpuHistory.push(result)
+          var totalUsage = 0;
+          var numberOfCpus = 0;
+          
+          for (var cpu in json) {
+            numberOfCpus++;
+            totalUsage += json[cpu];
+          }
+        
+          var averageOfAllCpus = Math.round(totalUsage / numberOfCpus);
+        
+          cpuHistory.push(averageOfAllCpus)
           var total = cpuHistory.reduce((x, y) => {
             return x + y
           })
