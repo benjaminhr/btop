@@ -62,3 +62,7 @@ tr:hover {
   stroke: black;
   stroke-width: 10px;
 }
+
+#cpu-avg {
+  float:right;
+}

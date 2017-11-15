@@ -4,6 +4,7 @@ var netResult = document.querySelectorAll('#net-result > p > span')
 var osResult = document.querySelectorAll('#os-result > p > span')
 var diskResult = document.querySelectorAll('.disk-usage ~ p > span')
 
+var fetch = window.fetch;
 var url = window.location.origin
 setInterval(() => {
   fetch(url + '/temp')
@@ -67,7 +68,6 @@ setInterval(() => {
           })
           var cpuAvg = document.getElementById('cpu-avg')
           var average = Math.round(total / 6)
-          console.log(average)
           cpuAvg.innerText = 'Average: ' + average + '%'
 
           if (cpuHistory.length > 6) {
