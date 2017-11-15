@@ -38,7 +38,7 @@ function runApplication() {
                 type: Chartist.FixedScaleAxis,
                 ticks: [0, 20, 40, 60, 80, 100],
                 high: 100,
-                low: 0
+                low: 0,
               }
             }
 
@@ -83,8 +83,8 @@ function runApplication() {
     fetch(url + '/disk')
           .then(data => data.json())
           .then(json => {
-            diskResult[0].innerText = 'Used: ' + json.used
-            diskResult[1].innerText = 'Size: ' + json.size
+            diskResult[0].innerText = json.used
+            diskResult[1].innerText = json.size
           })
   }, 2000)
 
