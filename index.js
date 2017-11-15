@@ -1,5 +1,5 @@
 const si = require('systeminformation');
-const temp = require('osx-temperature-sensor');
+const temp = require('osx-temperature-sensor'); // only for mac
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -63,6 +63,16 @@ app.get('/disk', (req, res) => {
         var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
         return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     };
+})
+
+
+app.get('/cpu', (req,res) => {
+    si.currentLoad().then(data => {
+        var load = data.cpus[0].load;
+        res.json({
+            'cpu-load':load
+        })
+    })
 })
 
 var port = process.env.PORT || 8080;

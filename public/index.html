@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <title>btop</title>
 </head>
 <body>
@@ -64,7 +65,15 @@
             <p class='title'>Processes running</p>
                 <table id='ps-result'></table>
         </div>
+
+        <div class="card chart">
+            <p class='title'>CPU usage <span id='cpu-avg'></span>
+                <div class="ct-chart ct-perfect-fourth"></div>
+            </p>
+        </div>
+
     </div>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script src='main.js'></script>
 </body>
 </html>

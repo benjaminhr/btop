@@ -52,3 +52,13 @@ tr:hover {
 #os-result > p >span {
   padding-left:0px;
 }
+
+.ct-series-a .ct-line {
+  stroke: black;
+  stroke-width: 2px;
+}
+
+.ct-series-a .ct-point {
+  stroke: black;
+  stroke-width: 10px;
+}

@@ -56,3 +56,38 @@ setInterval(() => {
             diskResult[1].innerText = 'Size: ' + json.size;
         })
 }, 2000)
+
+var cpuHistory = [];
+setInterval(() => {
+    fetch(url + '/cpu')
+        .then(data => data.json())
+        .then(json => {
+            var result = Math.round(json['cpu-load']);
+            cpuHistory.push(result);
+            var total = cpuHistory.reduce((x,y) => {
+                return x + y; 
+            })
+            var cpuAvg = document.getElementById('cpu-avg');
+            var average = Math.round(total / 6);
+            console.log(average);
+            cpuAvg.innerText = 'Average: ' + average + '%';
+
+            if (cpuHistory.length > 6) {
+                cpuHistory.shift();
+            }
+            var data = {
+                series: [cpuHistory]
+            };
+
+            var options = {
+                axisY: {
+                    type: Chartist.FixedScaleAxis,
+                    ticks: [0, 20, 40, 60, 80, 100],
+                    high: 100,
+                    low: 0
+                },
+            }
+
+            new Chartist.Line('.ct-chart', data, options);
+        })
+}, 1000)
