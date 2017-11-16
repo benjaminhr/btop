@@ -14,7 +14,7 @@ setTimeout(() => {
   loading.style.display = 'none';
   wrapper.style.display = 'flex';
   runApplication();
-}, 3000)
+}, 2500)
 
 function runApplication() {
   var tempHistory = [];
@@ -111,19 +111,16 @@ function runApplication() {
               totalUsage += json[cpu];
             }
           
-            var averageOfAllCpus = Math.round(totalUsage / numberOfCpus);
-          
+            var averageOfAllCpus = Math.round(totalUsage / numberOfCpus)
             cpuHistory.push(averageOfAllCpus)
-            var total = cpuHistory.reduce((x, y) => {
-              return x + y
-            })
+
             var cpuAvg = document.getElementById('cpu-avg')
-            var average = Math.round(total / 6)
-            cpuAvg.innerText = 'Average: ' + average + '%'
+            cpuAvg.innerText = 'Average: ' + averageOfAllCpus + '%'
 
             if (cpuHistory.length > 6) {
               cpuHistory.shift()
             }
+
             var data = {
               series: [cpuHistory]
             }
