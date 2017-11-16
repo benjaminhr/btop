@@ -51,7 +51,7 @@ app.get('/disk', (req, res) => {
   si.fsSize().then(disk => {
     var used = bytesToSize(disk[0].used)
     var size = bytesToSize(disk[0].size)
-    
+
     res.json({
       used: used,
       size: size

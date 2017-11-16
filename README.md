@@ -1,6 +1,6 @@
 # BTOP - Benjamin-top
 
-Display system information and processes running. 
+Display system information and processes running.
 
 Loads more features coming, and this will be used in another server project.
 

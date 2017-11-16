@@ -63,8 +63,18 @@ function runApplication() {
     fetch(url + '/net')
           .then(data => data.json())
           .then(json => {
-            netResult[0].innerText = json.rx_sec.toFixed(1)
-            netResult[1].innerText = json.tx_sec.toFixed(1)
+            var result = {};
+
+            if (json.rx_sec < 1 || json.tx_sec < 1) {
+              result['rx'] = 'Waiting...';
+              result['tx'] = 'Waiting...';
+            } else {
+              result['rx'] = json.rx_sec.toFixed(1);
+              result['tx'] = json.tx_sec.toFixed(1);
+            }
+
+            netResult[0].innerText = result['rx'];
+            netResult[1].innerText = result['tx'];
           })
   }, 2000)
 
