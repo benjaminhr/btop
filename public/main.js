@@ -36,8 +36,8 @@ function runApplication() {
             var options = {
               axisY: {
                 type: Chartist.FixedScaleAxis,
-                ticks: [0, 20, 40, 60, 80, 100],
-                high: 100,
+                ticks: [0, 20, 40, 60, 80, 100, 120],
+                high: 120,
                 low: 0,
               }
             }
@@ -121,8 +121,8 @@ function runApplication() {
             var options = {
               axisY: {
                 type: Chartist.FixedScaleAxis,
-                ticks: [0, 20, 40, 60, 80, 100],
-                high: 100,
+                ticks: [0, 20, 40, 60, 80, 100, 120],
+                high: 120,
                 low: 0
               }
             }
