@@ -4,29 +4,29 @@ var netResult = document.querySelectorAll('#net-result > p > span')
 var osResult = document.querySelectorAll('#os-result > p > span')
 var diskResult = document.querySelectorAll('.disk-usage ~ p > span')
 
-var fetch = window.fetch;
+var fetch = window.fetch
 var url = window.location.origin
 
-var loading = document.querySelector('.loading');
-var wrapper = document.querySelector('.wrapper');
+var loading = document.querySelector('.loading')
+var wrapper = document.querySelector('.wrapper')
 
 setTimeout(() => {
-  loading.style.display = 'none';
-  wrapper.style.display = 'flex';
-  runApplication();
+  loading.style.display = 'none'
+  wrapper.style.display = 'flex'
+  runApplication()
 }, 2500)
 
-function runApplication() {
-  var tempHistory = [];
+function runApplication () {
+  var tempHistory = []
   setInterval(() => {
     fetch(url + '/temp')
           .then(data => data.json())
           .then(json => {
-            tempHistory.push(json.temperature);
+            tempHistory.push(json.temperature)
             tempResult.innerText = 'Current: ' + json.temperature + '°C'
 
             if (tempHistory.length > 6) {
-              tempHistory.shift();
+              tempHistory.shift()
             }
 
             var data = {
@@ -38,7 +38,7 @@ function runApplication() {
                 type: Chartist.FixedScaleAxis,
                 ticks: [0, 20, 40, 60, 80, 100, 120],
                 high: 120,
-                low: 0,
+                low: 0
               }
             }
 
@@ -63,18 +63,18 @@ function runApplication() {
     fetch(url + '/net')
           .then(data => data.json())
           .then(json => {
-            var result = {};
+            var result = {}
 
             if (json.rx_sec < 1 || json.tx_sec < 1) {
-              result['rx'] = 'Waiting...';
-              result['tx'] = 'Waiting...';
+              result['rx'] = 'Waiting...'
+              result['tx'] = 'Waiting...'
             } else {
-              result['rx'] = json.rx_sec.toFixed(1);
-              result['tx'] = json.tx_sec.toFixed(1);
+              result['rx'] = json.rx_sec.toFixed(1)
+              result['tx'] = json.tx_sec.toFixed(1)
             }
 
-            netResult[0].innerText = result['rx'];
-            netResult[1].innerText = result['tx'];
+            netResult[0].innerText = result['rx']
+            netResult[1].innerText = result['tx']
           })
   }, 2000)
 
@@ -103,14 +103,14 @@ function runApplication() {
     fetch(url + '/cpu')
           .then(data => data.json())
           .then(json => {
-            var totalUsage = 0;
-            var numberOfCpus = 0;
-            
+            var totalUsage = 0
+            var numberOfCpus = 0
+
             for (var cpu in json) {
-              numberOfCpus++;
-              totalUsage += json[cpu];
+              numberOfCpus++
+              totalUsage += json[cpu]
             }
-          
+
             var averageOfAllCpus = Math.round(totalUsage / numberOfCpus)
             cpuHistory.push(averageOfAllCpus)
 
@@ -136,8 +136,8 @@ function runApplication() {
 
             new Chartist.Line('.cpu-chart', data, options)
 
-            var cores = document.querySelector('#cores');
-            cores.innerText = '(cores: ' + numberOfCpus + ')';
+            var cores = document.querySelector('#cores')
+            cores.innerText = '(cores: ' + numberOfCpus + ')'
           })
   }, 1000)
 }

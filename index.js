@@ -68,12 +68,12 @@ app.get('/disk', (req, res) => {
 
 app.get('/cpu', (req, res) => {
   si.currentLoad().then(data => {
-    var result = {};
+    var result = {}
     var cpus = data.cpus.forEach((cpu, index) => {
-      result[index + 1] = Math.round(cpu.load);
+      result[index + 1] = Math.round(cpu.load)
     })
 
-    res.json(result);
+    res.json(result)
   })
 })
 
