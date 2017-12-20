@@ -52,7 +52,7 @@ function runApplication () {
           .then(json => {
             var result = '<tr class="first-row"><th>PID</th><th>Name</th><th>CPU %</th></tr>'
             json.forEach((item) => {
-              result += `<tr><td>${item.pid}</td><td>${item.name}</td><td>${item.pcpu}</td><tr>`
+              result += `<tr><td>${item.pid}</td><td>${item.name}</td><td>${item.pcpu.toFixed(1)}</td><tr>`
             })
 
             psResult.innerHTML = result

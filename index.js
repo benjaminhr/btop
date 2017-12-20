@@ -1,5 +1,4 @@
 const si = require('systeminformation')
-const temp = require('osx-temperature-sensor') // only for mac
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -77,5 +76,5 @@ app.get('/cpu', (req, res) => {
   })
 })
 
-var port = process.env.PORT || 8080
+var port = process.env.PORT || 7000
 app.listen(port)
